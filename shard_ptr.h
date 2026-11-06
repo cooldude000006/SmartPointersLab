@@ -1,8 +1,0 @@
-//
-// Created by Ivan on 16.09.2026.
-//
-
-#ifndef SMARTPOINTERSLAB_SHARD_PTR_H
-#define SMARTPOINTERSLAB_SHARD_PTR_H
-
-#endif //SMARTPOINTERSLAB_SHARD_PTR_H

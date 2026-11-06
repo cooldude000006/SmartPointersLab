@@ -1,0 +1,17 @@
+# Каталоги сборки CLion / CMake
+cmake-build-*/
+build/
+out/
+
+# Локальные файлы IDE
+.idea/workspace.xml
+.idea/shelf/
+.vs/
+.vscode/
+
+# Рабочие копии Claude Code
+.claude/worktrees/
+
+# Python
+__pycache__/
+*.pyc
