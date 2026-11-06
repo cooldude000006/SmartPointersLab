@@ -59,6 +59,7 @@ enable_testing()
 add_executable(SmartPointersTests
         tests/TestUnqPtr.cpp
         tests/TestShrdPtr.cpp
+        tests/TestDynamicArray.cpp
 )
 target_link_libraries(SmartPointersTests PRIVATE SmartPointers gtest_main)
 
