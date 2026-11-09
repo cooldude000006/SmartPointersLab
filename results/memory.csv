@@ -1,0 +1,43 @@
+variant,count,total_bytes,bytes_per_object,allocations_per_object
+raw pointer,1,12,12,1
+UnqPtr,1,12,12,1
+std::unique_ptr,1,12,12,1
+ShrdPtr,1,28,28,2
+std::shared_ptr,1,44,44,2
+std::make_shared,1,40,40,1
+raw pointer,10,120,12,1
+UnqPtr,10,120,12,1
+std::unique_ptr,10,120,12,1
+ShrdPtr,10,280,28,2
+std::shared_ptr,10,440,44,2
+std::make_shared,10,400,40,1
+raw pointer,100,1200,12,1
+UnqPtr,100,1200,12,1
+std::unique_ptr,100,1200,12,1
+ShrdPtr,100,2800,28,2
+std::shared_ptr,100,4400,44,2
+std::make_shared,100,4000,40,1
+raw pointer,1000,12000,12,1
+UnqPtr,1000,12000,12,1
+std::unique_ptr,1000,12000,12,1
+ShrdPtr,1000,28000,28,2
+std::shared_ptr,1000,44000,44,2
+std::make_shared,1000,40000,40,1
+raw pointer,10000,120000,12,1
+UnqPtr,10000,120000,12,1
+std::unique_ptr,10000,120000,12,1
+ShrdPtr,10000,280000,28,2
+std::shared_ptr,10000,440000,44,2
+std::make_shared,10000,400000,40,1
+raw pointer,100000,1200000,12,1
+UnqPtr,100000,1200000,12,1
+std::unique_ptr,100000,1200000,12,1
+ShrdPtr,100000,2800000,28,2
+std::shared_ptr,100000,4400000,44,2
+std::make_shared,100000,4000000,40,1
+raw pointer,1000000,12000000,12,1
+UnqPtr,1000000,12000000,12,1
+std::unique_ptr,1000000,12000000,12,1
+ShrdPtr,1000000,28000000,28,2
+std::shared_ptr,1000000,44000000,44,2
+std::make_shared,1000000,40000000,40,1

@@ -71,5 +71,7 @@ gtest_discover_tests(SmartPointersTests)
 # ---------------------------------------------------------------------------
 add_executable(SmartPointersBenchmark
         benchmark/Benchmark.cpp
+        benchmark/AllocationCounter.cpp
 )
 target_link_libraries(SmartPointersBenchmark PRIVATE SmartPointers)
+target_compile_definitions(SmartPointersBenchmark PRIVATE RESULTS_DIR="${CMAKE_CURRENT_SOURCE_DIR}/results")

@@ -1,0 +1,82 @@
+=== unique_create: create + destroy one object, unique ownership (ns per operation) ===
+           N  raw new/delete      UnqPtr  std::unique_ptr    std/ours
+           1          101.39       62.05            52.40        0.84
+          10           50.18       54.88            61.69        1.12
+         100           49.11       49.51            49.88        1.01
+        1000           55.32       51.28            51.22        1.00
+       10000           49.74       49.28            49.16        1.00
+      100000           49.91       48.92            57.83        1.18
+     1000000           54.07       52.31            52.12        1.00
+    10000000           53.85       52.22            55.94        1.07
+   100000000           59.02       52.24            51.55        0.99
+
+=== shared_create: create + destroy one object, shared ownership (ns per operation) ===
+           N  raw new/delete     ShrdPtr  std::shared_ptr  std::make_shared    std/ours
+           1           53.05      106.63           108.17             53.69        1.01
+          10           50.51      103.62           104.29             53.24        1.01
+         100           49.76      102.53           101.91             58.86        0.99
+        1000           51.00      103.46           105.68             53.68        1.02
+       10000           51.96      104.44           105.72             61.45        1.01
+      100000           63.87      104.93           105.61             53.87        1.01
+     1000000           53.29      105.77           101.66             53.03        0.96
+    10000000           52.00      106.04           108.16             54.95        1.02
+   100000000           51.51      106.28           107.30             57.57        1.01
+
+=== shared_copy: copy pointer + destroy copy (ns per operation) ===
+           N  raw pointer     ShrdPtr  std::shared_ptr    std/ours
+           1         2.18        4.02            15.91        3.96
+          10         0.43        3.87            14.90        3.86
+         100         0.42        3.80            14.87        3.91
+        1000         0.28        3.79            14.89        3.92
+       10000         0.27        3.79            14.91        3.93
+      100000         0.27        3.80            14.97        3.95
+     1000000         0.27        3.79            14.86        3.92
+    10000000         0.27        3.82            15.01        3.93
+   100000000         0.30        3.95            15.11        3.82
+
+=== pass_by_value: pass pointer to function by value (ns per operation) ===
+           N  raw pointer     ShrdPtr  std::shared_ptr    std/ours
+           1         2.98        5.30            15.90        3.00
+          10         1.85        3.98            15.30        3.84
+         100         2.03        3.94            15.37        3.90
+        1000         2.16        3.91            15.37        3.93
+       10000         2.17        3.88            15.38        3.96
+      100000         2.17        3.84            15.41        4.02
+     1000000         2.17        3.92            14.28        3.65
+    10000000         2.18        3.84            15.52        4.05
+   100000000         2.25        3.94            15.64        3.97
+
+=== unique_array_create: create + destroy int[16], unique ownership (ns per operation) ===
+           N  raw new[]/delete[]  UnqPtr<T[]>  std::unique_ptr<T[]>    std/ours
+           1               58.16        60.25                 55.29        0.92
+          10               64.57        55.58                 55.06        0.99
+         100               54.20        52.56                 56.16        1.07
+        1000               67.07        53.13                 54.20        1.02
+       10000               50.94        59.39                 54.20        0.91
+      100000               52.05        52.12                 52.26        1.00
+     1000000               52.17        53.99                 56.23        1.04
+    10000000               54.69        55.14                 55.39        1.00
+   100000000               53.98        54.89                 55.55        1.01
+
+=== shared_array_create: create + destroy int[16], shared ownership (ns per operation) ===
+           N  raw new[]/delete[]  ShrdPtr<T[]>  std::shared_ptr<T[]>    std/ours
+           1               57.56        109.24                130.68        1.20
+          10               57.80        109.49                113.22        1.03
+         100               52.36        126.96                112.47        0.89
+        1000               50.99        107.05                115.66        1.08
+       10000               54.87        107.46                114.28        1.06
+      100000               54.42        106.99                120.65        1.13
+     1000000               54.57        109.42                112.93        1.03
+    10000000               54.00        109.45                119.13        1.09
+   100000000               53.84        109.32                117.57        1.08
+
+=== memory: N objects alive at once (pointer + requested heap bytes, without malloc overhead) ===
+             variant           N     total, MB    bytes/object   allocs/object
+         raw pointer     1000000         11.44           12.00            1.00
+              UnqPtr     1000000         11.44           12.00            1.00
+     std::unique_ptr     1000000         11.44           12.00            1.00
+             ShrdPtr     1000000         26.70           28.00            2.00
+     std::shared_ptr     1000000         41.96           44.00            2.00
+    std::make_shared     1000000         38.15           40.00            1.00
+
+CSV saved to C:/инфа 2 сем/SmartPointersLab/.claude/worktrees/smart-pointers-lab-d4dccd/results\time.csv and memory.csv
