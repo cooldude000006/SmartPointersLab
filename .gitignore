@@ -1,6 +1,7 @@
 # Каталоги сборки CLion / CMake
 cmake-build-*/
 build/
+build-linux/
 out/
 
 # Локальные файлы IDE

@@ -66,6 +66,11 @@ target_link_libraries(SmartPointersTests PRIVATE SmartPointers gtest_main)
 include(GoogleTest)
 gtest_discover_tests(SmartPointersTests)
 
+# Программа с намеренной утечкой для проверки valgrind/санитайзеров
+# (собирается только по запросу: scripts/check_memory.sh)
+add_executable(LeakDemo EXCLUDE_FROM_ALL tests/LeakDemo.cpp)
+target_link_libraries(LeakDemo PRIVATE SmartPointers)
+
 # ---------------------------------------------------------------------------
 # Нагрузочные тесты (запускать в конфигурации Release)
 # ---------------------------------------------------------------------------

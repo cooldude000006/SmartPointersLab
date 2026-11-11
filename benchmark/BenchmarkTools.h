@@ -40,8 +40,10 @@ struct Measurement
 // Замер run(count). При малых count прогон повторяется, пока суммарно не наберётся
 // kMinOperations операций (иначе время меньше точности таймера). Делается несколько
 // попыток, результат - медиана: она устойчива к случайным выбросам (другие процессы, ОС).
+// isQuick - один прогон без повторов и прогрева (проверка под valgrind, где важна
+// не точность времени, а то, что код выполняется).
 template <typename Function>
-Measurement Measure(std::size_t count, Function&& run)
+Measurement Measure(std::size_t count, Function&& run, bool isQuick = false)
 {
     const std::size_t kMinOperations = 300000;
     const std::size_t kLargeCount = 10000000;
@@ -53,11 +55,11 @@ Measurement Measure(std::size_t count, Function&& run)
         return {0.0, 0.0};
     }
 
-    const std::size_t repetitions = count >= kMinOperations ? 1 : kMinOperations / count;
-    const int trials = count >= kLargeCount ? kLargeTrials : kTrials;
+    const std::size_t repetitions = isQuick || count >= kMinOperations ? 1 : kMinOperations / count;
+    const int trials = isQuick ? 1 : (count >= kLargeCount ? kLargeTrials : kTrials);
 
     // Прогрев: кэши, страницы памяти аллокатора
-    if (count < kLargeCount)
+    if (!isQuick && count < kLargeCount)
     {
         run(count);
     }

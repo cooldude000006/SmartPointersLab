@@ -1,0 +1,2 @@
+# Shell-скрипты запускаются в Linux/WSL: только LF, иначе bash споткнётся о \r
+*.sh text eol=lf

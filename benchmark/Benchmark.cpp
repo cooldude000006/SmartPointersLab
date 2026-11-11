@@ -84,6 +84,7 @@ struct Options
 {
     std::size_t maxCount;
     std::filesystem::path outputDirectory;
+    bool isQuick; // один прогон без повторов - для valgrind и санитайзеров
 };
 
 // ---------------------------------------------------------------------------
@@ -310,7 +311,7 @@ const Variant* FindVariant(const Scenario& scenario, Role role)
 }
 
 // Таблица одного сценария: строки - N, столбцы - варианты (нс на операцию)
-std::vector<TimeResult> RunScenario(const Scenario& scenario, const std::vector<std::size_t>& counts)
+std::vector<TimeResult> RunScenario(const Scenario& scenario, const std::vector<std::size_t>& counts, bool isQuick)
 {
     const Variant* ours = FindVariant(scenario, Role::Ours);
     const Variant* standard = FindVariant(scenario, Role::Std);
@@ -332,7 +333,7 @@ std::vector<TimeResult> RunScenario(const Scenario& scenario, const std::vector<
 
         for (const Variant& variant : scenario.variants)
         {
-            const Measurement measurement = Measure(count, variant.run);
+            const Measurement measurement = Measure(count, variant.run, isQuick);
             results.push_back({scenario.name, variant.name, count, measurement});
 
             if (&variant == ours)
@@ -425,9 +426,10 @@ void WriteMemoryCsv(const std::filesystem::path& file, const std::vector<MemoryR
 // ---------------------------------------------------------------------------
 void PrintUsage(const char* programName)
 {
-    std::cout << "Usage: " << programName << " [--max N] [--out DIR]\n"
+    std::cout << "Usage: " << programName << " [--max N] [--out DIR] [--quick]\n"
               << "  --max N    largest number of operations, 1..1e9 (default 1e7)\n"
-              << "  --out DIR  directory for CSV results (default: <project>/results)\n";
+              << "  --out DIR  directory for CSV results (default: <project>/results)\n"
+              << "  --quick    single run per measurement (for valgrind / sanitizers)\n";
 }
 
 // Принимает и целые числа, и запись вида 1e8
@@ -453,6 +455,7 @@ bool ParseCount(const std::string& text, std::size_t& count)
 bool ParseOptions(int argc, char* argv[], Options& options)
 {
     options.maxCount = kDefaultMaxCount;
+    options.isQuick = false;
     // Путь к проекту в UTF-8 (может содержать кириллицу) - u8path
     options.outputDirectory = std::filesystem::u8path(RESULTS_DIR);
 
@@ -467,6 +470,10 @@ bool ParseOptions(int argc, char* argv[], Options& options)
             {
                 return false;
             }
+        }
+        else if (argument == "--quick")
+        {
+            options.isQuick = true;
         }
         else if (argument == "--out" && hasValue)
         {
@@ -522,7 +529,7 @@ int main(int argc, char* argv[])
         std::vector<TimeResult> timeResults;
         for (const Scenario& scenario : MakeScenarios())
         {
-            const std::vector<TimeResult> scenarioResults = RunScenario(scenario, counts);
+            const std::vector<TimeResult> scenarioResults = RunScenario(scenario, counts, options.isQuick);
             timeResults.insert(timeResults.end(), scenarioResults.begin(), scenarioResults.end());
         }
 
