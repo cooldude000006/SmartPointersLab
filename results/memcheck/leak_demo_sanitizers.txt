@@ -1,0 +1,13 @@
+
+=================================================================
+==2803==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 4 byte(s) in 1 object(s) allocated from:
+    #0 0x74948072c73f in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:109
+    #1 0x5d424b1cf799 in std::enable_if<!std::is_array<int>::value, UnqPtr<int> >::type MakeUnq<int, int>(int&&) /mnt/c/инфа 2 сем/SmartPointersLab/.claude/worktrees/smart-pointers-lab-d4dccd/include/UnqPtr.h:239
+    #2 0x5d424b1cf495 in main /mnt/c/инфа 2 сем/SmartPointersLab/.claude/worktrees/smart-pointers-lab-d4dccd/tests/LeakDemo.cpp:10
+    #3 0x74947f62a600 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:59
+    #4 0x74947f62a717 in __libc_start_main_impl ../csu/libc-start.c:360
+    #5 0x5d424b1cf2c4 in _start (/home/ivan/build-smartptr/sanitize/LeakDemo+0x22c4) (BuildId: 527be6b5261eee89ba4809af321478a9648da3de)
+
+SUMMARY: AddressSanitizer: 4 byte(s) leaked in 1 allocation(s).

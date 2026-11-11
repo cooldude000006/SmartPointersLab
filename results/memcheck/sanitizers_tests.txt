@@ -1,0 +1,137 @@
+Running main() from /home/ivan/build-smartptr/sanitize/_deps/googletest-src/googletest/src/gtest_main.cc
+[==========] Running 58 tests from 5 test suites.
+[----------] Global test environment set-up.
+[----------] 13 tests from UnqPtrTest
+[ RUN      ] UnqPtrTest.DefaultConstructedIsNull
+[       OK ] UnqPtrTest.DefaultConstructedIsNull (0 ms)
+[ RUN      ] UnqPtrTest.OwnsObjectAndDeletesItAtScopeExit
+[       OK ] UnqPtrTest.OwnsObjectAndDeletesItAtScopeExit (0 ms)
+[ RUN      ] UnqPtrTest.MakeUnqForwardsArguments
+[       OK ] UnqPtrTest.MakeUnqForwardsArguments (0 ms)
+[ RUN      ] UnqPtrTest.DereferencingNullThrows
+[       OK ] UnqPtrTest.DereferencingNullThrows (0 ms)
+[ RUN      ] UnqPtrTest.MoveConstructorTransfersOwnership
+[       OK ] UnqPtrTest.MoveConstructorTransfersOwnership (0 ms)
+[ RUN      ] UnqPtrTest.MoveAssignmentDeletesPreviousObject
+[       OK ] UnqPtrTest.MoveAssignmentDeletesPreviousObject (0 ms)
+[ RUN      ] UnqPtrTest.SelfMoveAssignmentKeepsObject
+[       OK ] UnqPtrTest.SelfMoveAssignmentKeepsObject (0 ms)
+[ RUN      ] UnqPtrTest.AssigningNullptrDeletesObject
+[       OK ] UnqPtrTest.AssigningNullptrDeletesObject (0 ms)
+[ RUN      ] UnqPtrTest.ReleaseGivesUpOwnership
+[       OK ] UnqPtrTest.ReleaseGivesUpOwnership (0 ms)
+[ RUN      ] UnqPtrTest.ResetReplacesObject
+[       OK ] UnqPtrTest.ResetReplacesObject (0 ms)
+[ RUN      ] UnqPtrTest.ResetWithSamePointerDoesNotDelete
+[       OK ] UnqPtrTest.ResetWithSamePointerDoesNotDelete (0 ms)
+[ RUN      ] UnqPtrTest.SwapExchangesObjects
+[       OK ] UnqPtrTest.SwapExchangesObjects (0 ms)
+[ RUN      ] UnqPtrTest.DerivedConvertsToBase
+[       OK ] UnqPtrTest.DerivedConvertsToBase (0 ms)
+[----------] 13 tests from UnqPtrTest (2 ms total)
+
+[----------] 7 tests from UnqPtrArrayTest
+[ RUN      ] UnqPtrArrayTest.MakeUnqCreatesValueInitializedArray
+[       OK ] UnqPtrArrayTest.MakeUnqCreatesValueInitializedArray (0 ms)
+[ RUN      ] UnqPtrArrayTest.IndexAccessReadsAndWrites
+[       OK ] UnqPtrArrayTest.IndexAccessReadsAndWrites (0 ms)
+[ RUN      ] UnqPtrArrayTest.DeletesAllElements
+[       OK ] UnqPtrArrayTest.DeletesAllElements (0 ms)
+[ RUN      ] UnqPtrArrayTest.IndexingNullThrows
+[       OK ] UnqPtrArrayTest.IndexingNullThrows (0 ms)
+[ RUN      ] UnqPtrArrayTest.MoveTransfersArray
+[       OK ] UnqPtrArrayTest.MoveTransfersArray (0 ms)
+[ RUN      ] UnqPtrArrayTest.ResetDeletesOldArray
+[       OK ] UnqPtrArrayTest.ResetDeletesOldArray (0 ms)
+[ RUN      ] UnqPtrArrayTest.EmptyArrayIsValid
+[       OK ] UnqPtrArrayTest.EmptyArrayIsValid (0 ms)
+[----------] 7 tests from UnqPtrArrayTest (1 ms total)
+
+[----------] 20 tests from ShrdPtrTest
+[ RUN      ] ShrdPtrTest.DefaultConstructedIsEmpty
+[       OK ] ShrdPtrTest.DefaultConstructedIsEmpty (0 ms)
+[ RUN      ] ShrdPtrTest.OwnsObjectWithCountOne
+[       OK ] ShrdPtrTest.OwnsObjectWithCountOne (0 ms)
+[ RUN      ] ShrdPtrTest.MakeShrdForwardsArguments
+[       OK ] ShrdPtrTest.MakeShrdForwardsArguments (0 ms)
+[ RUN      ] ShrdPtrTest.DereferencingNullThrows
+[       OK ] ShrdPtrTest.DereferencingNullThrows (0 ms)
+[ RUN      ] ShrdPtrTest.CopiesShareObjectAndCount
+[       OK ] ShrdPtrTest.CopiesShareObjectAndCount (0 ms)
+[ RUN      ] ShrdPtrTest.ObjectDeletedOnlyByLastOwner
+[       OK ] ShrdPtrTest.ObjectDeletedOnlyByLastOwner (0 ms)
+[ RUN      ] ShrdPtrTest.MoveDoesNotChangeCount
+[       OK ] ShrdPtrTest.MoveDoesNotChangeCount (0 ms)
+[ RUN      ] ShrdPtrTest.CopyAssignmentReleasesOldObject
+[       OK ] ShrdPtrTest.CopyAssignmentReleasesOldObject (0 ms)
+[ RUN      ] ShrdPtrTest.SelfCopyAssignmentKeepsObject
+[       OK ] ShrdPtrTest.SelfCopyAssignmentKeepsObject (0 ms)
+[ RUN      ] ShrdPtrTest.AssignmentBetweenOwnersOfSameObject
+[       OK ] ShrdPtrTest.AssignmentBetweenOwnersOfSameObject (0 ms)
+[ RUN      ] ShrdPtrTest.SelfMoveAssignmentKeepsObject
+[       OK ] ShrdPtrTest.SelfMoveAssignmentKeepsObject (0 ms)
+[ RUN      ] ShrdPtrTest.MoveAssignmentReleasesOldObject
+[       OK ] ShrdPtrTest.MoveAssignmentReleasesOldObject (0 ms)
+[ RUN      ] ShrdPtrTest.ResetReleasesOwnership
+[       OK ] ShrdPtrTest.ResetReleasesOwnership (0 ms)
+[ RUN      ] ShrdPtrTest.ResetWithSamePointerDoesNotDelete
+[       OK ] ShrdPtrTest.ResetWithSamePointerDoesNotDelete (0 ms)
+[ RUN      ] ShrdPtrTest.SwapExchangesObjectsAndCounts
+[       OK ] ShrdPtrTest.SwapExchangesObjectsAndCounts (0 ms)
+[ RUN      ] ShrdPtrTest.TakesOwnershipFromUnqPtr
+[       OK ] ShrdPtrTest.TakesOwnershipFromUnqPtr (0 ms)
+[ RUN      ] ShrdPtrTest.EmptyUnqPtrGivesEmptyShrdPtr
+[       OK ] ShrdPtrTest.EmptyUnqPtrGivesEmptyShrdPtr (0 ms)
+[ RUN      ] ShrdPtrTest.DerivedConvertsToBaseAndSharesCount
+[       OK ] ShrdPtrTest.DerivedConvertsToBaseAndSharesCount (0 ms)
+[ RUN      ] ShrdPtrTest.DerivedAssignsToBase
+[       OK ] ShrdPtrTest.DerivedAssignsToBase (0 ms)
+[ RUN      ] ShrdPtrTest.ManyCopiesKeepCorrectCount
+[       OK ] ShrdPtrTest.ManyCopiesKeepCorrectCount (5 ms)
+[----------] 20 tests from ShrdPtrTest (8 ms total)
+
+[----------] 6 tests from ShrdPtrArrayTest
+[ RUN      ] ShrdPtrArrayTest.CopiesShareArray
+[       OK ] ShrdPtrArrayTest.CopiesShareArray (0 ms)
+[ RUN      ] ShrdPtrArrayTest.LastOwnerDeletesAllElements
+[       OK ] ShrdPtrArrayTest.LastOwnerDeletesAllElements (0 ms)
+[ RUN      ] ShrdPtrArrayTest.TakesOwnershipFromUnqPtrArray
+[       OK ] ShrdPtrArrayTest.TakesOwnershipFromUnqPtrArray (0 ms)
+[ RUN      ] ShrdPtrArrayTest.SelfAssignmentKeepsArray
+[       OK ] ShrdPtrArrayTest.SelfAssignmentKeepsArray (0 ms)
+[ RUN      ] ShrdPtrArrayTest.IndexingNullThrows
+[       OK ] ShrdPtrArrayTest.IndexingNullThrows (0 ms)
+[ RUN      ] ShrdPtrArrayTest.ResetReplacesArray
+[       OK ] ShrdPtrArrayTest.ResetReplacesArray (0 ms)
+[----------] 6 tests from ShrdPtrArrayTest (0 ms total)
+
+[----------] 12 tests from DynamicArrayTest
+[ RUN      ] DynamicArrayTest.DefaultConstructedIsEmpty
+[       OK ] DynamicArrayTest.DefaultConstructedIsEmpty (0 ms)
+[ RUN      ] DynamicArrayTest.ConstructedWithSizeHasDefaultElements
+[       OK ] DynamicArrayTest.ConstructedWithSizeHasDefaultElements (0 ms)
+[ RUN      ] DynamicArrayTest.SetAndGet
+[       OK ] DynamicArrayTest.SetAndGet (0 ms)
+[ RUN      ] DynamicArrayTest.OutOfRangeThrows
+[       OK ] DynamicArrayTest.OutOfRangeThrows (0 ms)
+[ RUN      ] DynamicArrayTest.AppendGrowsCapacity
+[       OK ] DynamicArrayTest.AppendGrowsCapacity (0 ms)
+[ RUN      ] DynamicArrayTest.AppendOwnElementDuringReallocation
+[       OK ] DynamicArrayTest.AppendOwnElementDuringReallocation (0 ms)
+[ RUN      ] DynamicArrayTest.ResizeKeepsPrefixAndClearsTail
+[       OK ] DynamicArrayTest.ResizeKeepsPrefixAndClearsTail (0 ms)
+[ RUN      ] DynamicArrayTest.CopyIsDeep
+[       OK ] DynamicArrayTest.CopyIsDeep (0 ms)
+[ RUN      ] DynamicArrayTest.MoveLeavesSourceEmpty
+[       OK ] DynamicArrayTest.MoveLeavesSourceEmpty (0 ms)
+[ RUN      ] DynamicArrayTest.SelfAssignmentKeepsData
+[       OK ] DynamicArrayTest.SelfAssignmentKeepsData (0 ms)
+[ RUN      ] DynamicArrayTest.NoLeaksWithTrackedElements
+[       OK ] DynamicArrayTest.NoLeaksWithTrackedElements (0 ms)
+[ RUN      ] DynamicArrayTest.StoresSharedPointers
+[       OK ] DynamicArrayTest.StoresSharedPointers (0 ms)
+[----------] 12 tests from DynamicArrayTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 58 tests from 5 test suites ran. (15 ms total)
+[  PASSED  ] 58 tests.

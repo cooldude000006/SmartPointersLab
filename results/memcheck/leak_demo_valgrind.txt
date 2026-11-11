@@ -1,0 +1,25 @@
+==2802== Memcheck, a memory error detector
+==2802== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==2802== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info
+==2802== Command: /home/ivan/build-smartptr/debug/LeakDemo
+==2802== 
+leaked value: 42
+==2802== 
+==2802== HEAP SUMMARY:
+==2802==     in use at exit: 4 bytes in 1 blocks
+==2802==   total heap usage: 3 allocs, 2 frees, 77,828 bytes allocated
+==2802== 
+==2802== 4 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==2802==    at 0x4850FD3: operator new(unsigned long) (vg_replace_malloc.c:488)
+==2802==    by 0x4001309: std::enable_if<!std::is_array<int>::value, UnqPtr<int> >::type MakeUnq<int, int>(int&&) (UnqPtr.h:239)
+==2802==    by 0x400123E: main (LeakDemo.cpp:10)
+==2802== 
+==2802== LEAK SUMMARY:
+==2802==    definitely lost: 4 bytes in 1 blocks
+==2802==    indirectly lost: 0 bytes in 0 blocks
+==2802==      possibly lost: 0 bytes in 0 blocks
+==2802==    still reachable: 0 bytes in 0 blocks
+==2802==         suppressed: 0 bytes in 0 blocks
+==2802== 
+==2802== For lists of detected and suppressed errors, rerun with: -s
+==2802== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
