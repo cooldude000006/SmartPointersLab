@@ -7,6 +7,9 @@
 только в `ShrdPtr`), функциональные и нагрузочные тесты, проверка отсутствия утечек
 valgrind и санитайзерами.
 
+Техническое задание (сущности, связи, функциональные и нефункциональные требования):
+[docs/TZ.md](docs/TZ.md). Теория к защите: [docs/THEORY.md](docs/THEORY.md).
+
 ## Что реализовано
 
 | Класс | Файл | Назначение |
@@ -36,7 +39,7 @@ tests/        GoogleTest: TestUnqPtr, TestShrdPtr, TestDynamicArray;
 benchmark/    нагрузочные тесты, подсчёт памяти (замена operator new)
 scripts/      plot_results.py - графики; check_memory.sh - valgrind и санитайзеры
 results/      таблицы, CSV, графики (plots/), логи проверки памяти (memcheck/)
-docs/         THEORY.md - теория к защите
+docs/         TZ.md - техническое задание; THEORY.md - теория к защите
 ```
 
 ## Сборка и запуск
